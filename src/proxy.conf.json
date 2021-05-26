@@ -1,0 +1,7 @@
+{
+	"": {
+		"target": "https://rapid-simple-banking.herokuapp.com",
+		"secure": false,
+		"logLevel": "debug"
+	}
+}

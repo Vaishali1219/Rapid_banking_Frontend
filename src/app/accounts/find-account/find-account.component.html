@@ -1,0 +1,115 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+    <form (submit)="findAccount(accountFindForm)" #accountFindForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+		  
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Account Number" name="account_number" ngModel #account_numberInput="ngModel" required />
+              <mat-error *ngIf="account_numberInput.invalid">Please Enter Account Number</mat-error>
+            </mat-form-field>
+          </div>
+		  
+		  <div>
+			<button mat-raised-button color="accent" type="submit">Find Account</button>
+		  </div>
+          
+			<div>
+				<button mat-raised-button color="warn" (click)="resetForm(accountFindForm)">Clear</button>
+			</div>
+        </div>   
+        <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <form (submit)="findAccount(accountFindForm_a)" #accountFindForm_a="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+          
+           <mat-form-field>
+              <input matInput type="text" placeholder="Account Number" name="account_number" ngModel #account_numberInput="ngModel" required />
+              <mat-error *ngIf="account_numberInput.invalid">Please Enter Account Number</mat-error>
+           </mat-form-field>
+		  
+		  <div fxLayout="row" fxLayoutAlign="center center" class="flex-container-box">
+			<button mat-raised-button color="accent" type="submit">Find Account</button>
+			<button mat-raised-button color="warn" (click)="resetForm(accountFindForm)">Clear</button>
+		  </div>
+       
+        </div>
+
+       </form> 
+  </mat-card>
+</div>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+	<mat-card>
+	
+	<form [formGroup]="account_detail_form" fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder</mat-label>
+    <input matInput type="text" formControlName="name" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Number</mat-label>
+    <input matInput type="text" formControlName="account_number" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account category</mat-label>
+    <input matInput type="text" formControlName="account_category" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Balance</mat-label>
+    <input matInput type="text" formControlName="balance" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder Phone No</mat-label>
+    <input matInput type="text" formControlName="phone" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder Address</mat-label>
+    <input matInput type="text" formControlName="address" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder City</mat-label>
+    <input matInput type="text" formControlName="city" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder State</mat-label>
+    <input matInput type="text" formControlName="state" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder Country</mat-label>
+    <input matInput type="text" formControlName="country" />
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+	<mat-label>Account Open Date</mat-label>
+	<input matInput formControlName="created">
+  </mat-form-field>
+ 
+  </form>
+  
+  <div>
+	<button mat-raised-button color="warn" (click)="onDeleteAccount()">Delete Account</button>
+  </div>
+	</mat-card>
+</div>
+

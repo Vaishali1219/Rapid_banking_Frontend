@@ -1,0 +1,107 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <form (submit)="findCustomer(customerFindForm)" #customerFindForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+		  <div>
+			<mat-form-field appearance="fill">
+            <mat-label>Find Value</mat-label>
+            <mat-select placeholder="Gender" ngModel name="find_value" required>
+              <mat-option value="email">
+                Email
+              </mat-option>
+              <mat-option value="phone">
+                Phone
+              </mat-option>
+              <mat-option value="cust_id">
+                Customer_Id
+              </mat-option>
+			  <mat-option value="accountNumber">
+                Account_Number
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+		  </div>
+          
+          <div>
+            <mat-form-field>
+              <input matInput type="text" name="val" ngModel #valueInput="ngModel" required />
+              <mat-error *ngIf="valueInput.invalid">Please Enter A Search Value</mat-error>
+            </mat-form-field>
+          </div>
+		  
+		  <div>
+			<button mat-raised-button color="accent" type="submit">Find Customer</button>
+		  </div>
+          
+			<div>
+				<button mat-raised-button color="warn" (click)="resetForm(customerFindForm)">Clear</button>
+			</div>
+        </div>
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <form (submit)="findCustomer(customerFindForm_a)" #customerFindForm_a="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+			<mat-form-field appearance="fill">
+            <mat-label>Find Value</mat-label>
+            <mat-select placeholder="Gender" ngModel name="find_value" required>
+              <mat-option value="email">
+                Email
+              </mat-option>
+              <mat-option value="phone">
+                Phone
+              </mat-option>
+              <mat-option value="cust_id">
+                Customer_Id
+              </mat-option>
+			  <mat-option value="accountNumber">
+                Account_Number
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+           <mat-form-field>
+              <input matInput type="text" name="val" ngModel #valueInput="ngModel" required />
+              <mat-error *ngIf="valueInput.invalid">Please Enter A Search Value</mat-error>
+            </mat-form-field>
+		  
+		  <div fxLayout="row" fxLayoutAlign="center center" class="flex-container-box">
+			<button mat-raised-button color="accent" type="submit">Find Customer</button>
+		    <button mat-raised-button color="warn" (click)="resetForm(customerFindForm_a)">Clear</button>
+		  </div>
+       
+        </div>
+
+       </form> 
+  </mat-card>
+</div>
+		
+<!---------------------------------------------------------------------------------------------------------->
+<mat-card class="flex-container-box">
+  <mat-spinner mode="indeterminate" *ngIf="isLoading" fxLayoutAlign="center center"></mat-spinner>
+
+  <div>
+	  <div *ngIf="imagePreview === null">
+        <img src="assets/images/13.png" alt="Card image cap" />
+      </div>
+
+      <div *ngIf="imagePreview !== '' && imagePreview">
+        <img [src]="imagePreview"/>
+      </div>
+	  
+	  <div fxLayout="row" fxLayoutAlign="center center" class="flex-container-box">
+			<button mat-raised-button color="accent" (click)="DeletePhoto()">Delete Photo</button>
+	  </div>
+  </div>
+
+</mat-card>
+
+
+

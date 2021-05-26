@@ -1,0 +1,223 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <form (submit)="findCustomer(customerFindForm)" #customerFindForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+		  <div>
+			<mat-form-field appearance="fill">
+            <mat-label>Find Value</mat-label>
+            <mat-select placeholder="Gender" ngModel name="find_value" required>
+              <mat-option value="email">
+                Email
+              </mat-option>
+              <mat-option value="phone">
+                Phone
+              </mat-option>
+              <mat-option value="cust_id">
+                Customer_Id
+              </mat-option>
+			  <mat-option value="accountNumber">
+                Account_Number
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+		  </div>
+          
+          <div>
+            <mat-form-field>
+              <input matInput type="text" name="val" ngModel #valueInput="ngModel" required />
+              <mat-error *ngIf="valueInput.invalid">Please Enter A Search Value</mat-error>
+            </mat-form-field>
+          </div>
+		  
+		  <div>
+			<button mat-raised-button color="accent" type="submit">Find Customer</button>
+		  </div>
+          
+			<div>
+				<button mat-raised-button color="warn" (click)="resetForm(customerFindForm)">Clear</button>
+			</div>
+        </div>
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <form (submit)="findCustomer(customerFindForm_a)" #customerFindForm_a="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+			<mat-form-field appearance="fill">
+            <mat-label>Find Value</mat-label>
+            <mat-select placeholder="Gender" ngModel name="find_value" required>
+              <mat-option value="email">
+                Email
+              </mat-option>
+              <mat-option value="phone">
+                Phone
+              </mat-option>
+              <mat-option value="cust_id">
+                Customer_Id
+              </mat-option>
+			  <mat-option value="accountNumber">
+                Account_Number
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+           <mat-form-field>
+              <input matInput type="text" name="val" ngModel #valueInput="ngModel" required />
+              <mat-error *ngIf="valueInput.invalid">Please Enter A Search Value</mat-error>
+            </mat-form-field>
+		  
+		  <div fxLayout="row" fxLayoutAlign="center center" class="flex-container-box">
+			<button mat-raised-button color="accent" type="submit">Find Customer</button>
+		    <button mat-raised-button color="warn" (click)="resetForm(customerFindForm_a)">Clear</button>
+		  </div>
+       
+        </div>
+
+       </form> 
+  </mat-card>
+</div>
+
+<section>
+	<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+	<div id="main" *ngIf="customer !== null">
+    <!-- <div fxLayoutAlign="center" class="flex-container-box"> -->
+		<div fxLayout="column" fxLayoutAlign="center center" class="flex-container">
+		<div class="push" fxLayout="row" fxLayoutAlign="center center">
+          <mat-list>
+            <mat-list-item>First_Name</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Last_Name</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Date of Birth</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Address</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>City</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>State</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Country</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Phone No</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Email</mat-list-item>
+          </mat-list>
+          <mat-list>
+            <mat-list-item>{{customer.first_name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{customer.last_name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{customer.dob | date}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.address}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.city}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.state}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.country}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.phone}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.email}}</mat-list-item>
+          </mat-list>
+		</div>
+		
+			  <div class="push">
+			<mat-card class="example-card">
+			  <mat-card-header>
+				<div mat-card-avatar class="example-header-image" [style.background-image]="'url(' + cardImage  + ')'"></div>
+				<mat-card-title>{{customer.first_name}}</mat-card-title>
+				<mat-card-subtitle>{{customer.last_name}}</mat-card-subtitle>
+			  </mat-card-header>
+			  <img mat-card-image [src]="imagePreview" alt="No Photo">
+			 
+			</mat-card>
+		  </div>
+      </div>
+	  
+	  <button mat-button color="warn"(click)="onDeleteCustomer()">DELETE</button>
+	<!-- </div> -->
+</div>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.lt-md>
+	<div id="main" *ngIf="customer !== null">
+    <!-- <div fxLayoutAlign="center" class="flex-container-box"> -->
+		<div fxLayoutAlign="center center" class="flex-container">
+        <div class="push">
+          <mat-list>
+            <mat-list-item>First_Name</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Last_Name</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Date of Birth</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Address</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>City</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>State</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Country</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Phone No</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Email</mat-list-item>
+          </mat-list>
+
+        </div>
+
+        <div class="push">
+          <mat-list>
+            <mat-list-item>{{customer.first_name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{customer.last_name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{customer.dob | date}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.address}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.city}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.state}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.country}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.phone}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.email}}</mat-list-item>
+          </mat-list>
+        </div>
+	
+		  <div class="push">
+			<mat-card class="example-card">
+			  <mat-card-header>
+				<div mat-card-avatar class="example-header-image" [style.background-image]="'url(' + cardImage  + ')'"></div>
+				<mat-card-title>{{customer.first_name}}</mat-card-title>
+				<mat-card-subtitle>{{customer.last_name}}</mat-card-subtitle>
+			  </mat-card-header>
+			  <img mat-card-image [src]="imagePreview" alt="No Photo">
+			  
+			  
+			</mat-card>
+		  </div>
+      </div>
+	  
+	  <button mat-button color="warn"(click)="onDeleteCustomer()">DELETE</button>
+	<!-- </div> -->
+</div>
+</div>
+</section>
+
+<section>
+	
+</section>
+
+

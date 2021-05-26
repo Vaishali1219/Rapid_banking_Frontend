@@ -1,0 +1,265 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <form (submit)="findCustomer(customerFindForm)" #customerFindForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+		  <div>
+			<mat-form-field appearance="fill">
+            <mat-label>Find Value</mat-label>
+            <mat-select placeholder="Gender" ngModel name="find_value" required>
+              <mat-option value="email">
+                Email
+              </mat-option>
+              <mat-option value="phone">
+                Phone
+              </mat-option>
+              <mat-option value="cust_id">
+                Customer_Id
+              </mat-option>
+			  <mat-option value="accountNumber">
+                Account_Number
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+		  </div>
+          
+          <div>
+            <mat-form-field>
+              <input matInput type="text" name="val" ngModel #valueInput="ngModel" required />
+              <mat-error *ngIf="valueInput.invalid">Please Enter A Search Value</mat-error>
+            </mat-form-field>
+          </div>
+		  
+		  <div>
+			<button mat-raised-button color="accent" type="submit">Find Customer</button>
+		  </div>
+          
+			<div>
+				<button mat-raised-button color="warn" (click)="resetForm(customerFindForm)">Clear</button>
+			</div>
+        </div>
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <form (submit)="findCustomer(customerFindForm_a)" #customerFindForm_a="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+			<mat-form-field appearance="fill">
+            <mat-label>Find Value</mat-label>
+            <mat-select placeholder="Gender" ngModel name="find_value" required>
+              <mat-option value="email">
+                Email
+              </mat-option>
+              <mat-option value="phone">
+                Phone
+              </mat-option>
+              <mat-option value="cust_id">
+                Customer_Id
+              </mat-option>
+			  <mat-option value="accountNumber">
+                Account_Number
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+           <mat-form-field>
+              <input matInput type="text" name="val" ngModel #valueInput="ngModel" required />
+              <mat-error *ngIf="valueInput.invalid">Please Enter A Search Value</mat-error>
+            </mat-form-field>
+		  
+		  <div fxLayout="row" fxLayoutAlign="center center" class="flex-container-box">
+			<button mat-raised-button color="accent" type="submit">Find Customer</button>
+		    <button mat-raised-button color="warn" (click)="resetForm(customerFindForm_a)">Clear</button>
+		  </div>
+       
+        </div>
+
+       </form> 
+  </mat-card>
+</div>
+		
+<!---------------------------------------------------------------------------------------------------------->
+<div>
+      <div fxLayoutAlign="center center" class="flex-container">
+        
+		<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+	<form (submit)="onUpdateCustomer()" [formGroup]="update_form" fxLayout="column" fxLayoutAlign="center center">
+      
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="First Name" formControlName="first_name"/>
+              <mat-error *ngIf="update_form.get('first_name').invalid">Please Enter First Name</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+			<mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="Last Name" formControlName="last_name"/>
+              <mat-error *ngIf="update_form.get('last_name').invalid">Please Enter Last Name</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+			<mat-form-field *ngIf="customer !== null">
+              <input matInput type="email" placeholder="abcde@example.com" formControlName="email"/>
+              <mat-error *ngIf="update_form.get('email').invalid">Please Enter a Valid Email</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+		  <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="919293949" formControlName="phone"/>
+              <mat-error *ngIf="update_form.get('phone').invalid">Please Enter a Valid Phone Number</mat-error>
+          </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select placeholder="Gender"  formControlName="sex">
+              <mat-option value=0>
+                Male
+              </mat-option>
+              <mat-option value=1>
+                Female
+              </mat-option>
+              <mat-option value=3>
+                Others
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <input matInput [matDatepicker]="picker" placeholder="Date Of Birth" [max]="maxDate"  formControlName="birthdate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+		    <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="Address" formControlName="address"/>
+              <mat-error *ngIf="update_form.get('address').invalid">Please Enter Adddress</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+			<mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="City" formControlName="city"/>
+              <mat-error *ngIf="update_form.get('city').invalid">Please Enter City</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+		  <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="State" formControlName="state"/>
+              <mat-error *ngIf="update_form.get('state').invalid">Please Enter State</mat-error>
+          </mat-form-field>
+          </div>
+
+          <div>
+		  <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="Country" formControlName="country"/>
+              <mat-error *ngIf="update_form.get('country').invalid">Please Enter Country</mat-error>
+          </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <button mat-raised-button color="accent" type="submit">Update Customer</button>
+          <button mat-raised-button color="warn" (click)="clearForm()">Clear</button>
+        </div>
+        <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <!-- <mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner> -->
+    <form (submit)="onUpdateCustomer()" [formGroup]="update_form" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+
+        <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="First Name" formControlName="first_name"/>
+              <mat-error *ngIf="update_form.get('first_name').invalid">Please Enter First Name</mat-error>
+        </mat-form-field>
+		
+        <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="Last Name" formControlName="last_name"/>
+              <mat-error *ngIf="update_form.get('last_name').invalid">Please Enter Last Name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="customer !== null">
+              <input matInput type="email" placeholder="abcde@example.com" formControlName="email"/>
+              <mat-error *ngIf="update_form.get('email').invalid">Please Enter a Valid Email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="919293949" formControlName="phone"/>
+              <mat-error *ngIf="update_form.get('phone').invalid">Please Enter a Valid Phone Number</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select placeholder="Gender"  formControlName="sex">
+              <mat-option *ngFor="let g of gender" [value]="g.code">
+                {{g.sex}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+          <input matInput [matDatepicker]="dobpicker" placeholder="Date Of Birth" [max]="maxDate" formControlName="birthdate">
+          <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
+          <mat-datepicker #dobpicker></mat-datepicker>
+        </mat-form-field>
+
+          <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="Address" formControlName="address"/>
+              <mat-error *ngIf="update_form.get('address').invalid">Please Enter Adddress</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="City" formControlName="city"/>
+              <mat-error *ngIf="update_form.get('city').invalid">Please Enter City</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="State" formControlName="state"/>
+              <mat-error *ngIf="update_form.get('state').invalid">Please Enter State</mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="customer !== null">
+              <input matInput type="text" placeholder="Country" formControlName="country"/>
+              <mat-error *ngIf="update_form.get('country').invalid">Please Enter Country</mat-error>
+          </mat-form-field>
+        </div>
+      <div fxLayoutAlign="center center" class="flex-container">
+        <button mat-raised-button color="accent" type="submit">Update Customer</button>
+        <button mat-raised-button color="warn">Clear</button>
+      </div>
+      <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+    </form>
+  </mat-card>
+</div>
+		
+      </div>
+</div>
+

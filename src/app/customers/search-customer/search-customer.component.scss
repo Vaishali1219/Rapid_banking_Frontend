@@ -1,0 +1,123 @@
+mat-list{
+	margin: 5px auto;
+	padding: 5px;
+	width: 100%;
+}
+
+mat-card {
+  width: 100%;
+}
+
+mat-form-field, textarea {
+  width: 300px;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+/**.flex-container {
+  display: flex;
+  flex-direction: column;
+}**/
+
+.half {
+  display: none;
+}
+
+button{
+    margin: 5px;
+    padding: 5px;
+}
+
+div{
+	margin: 2px;
+	padding: 2px;
+}
+
+img{
+	max-width: 500px;
+	max-height: 300px;
+}
+
+#main{
+	margin: 5px auto;
+	padding: 5px;
+}
+
+.push{
+  marign: 20px auto;
+  padding: 20px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+@media (max-width: 800px) {
+  .flex-container-box {
+    display: flex;
+    flex-direction: row;
+	flex: 1;
+	-webkit-display: flex;
+    -webkit-flex-direction: row;
+	-webkit-flex: 1;
+  }
+  
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+	flex: 1;
+	-webkit-display: flex;
+    -webkit-flex-direction: row;
+	-webkit-flex: 1;
+  }
+
+  .full {
+    display: none;
+  }
+  
+  mat-form-field, textarea {
+    width: 200px;
+  }
+  
+  mat-panel-title{
+		font-size: 12px;
+		padding: 5px;
+		margin: 10px auto;
+  }
+	
+	mat-panel-description h3{
+		display: none;
+	}
+
+	.push mat-list mat-list-item{
+		font-size: 8px;
+		font-weight: bold;
+		padding: 1px;
+	}
+	
+  #main{
+	margin: 5px auto;
+	padding: 5px;
+	display: flex;
+    flex-direction: column;
+	flex: 1;
+	-webkit-display: flex;
+    -webkit-flex-direction: row;
+	-webkit-flex: 1;
+  }
+  
+  .push{
+	display: flex;
+    flex-direction: column;
+	flex: 1;
+	-webkit-display: flex;
+    -webkit-flex-direction: row;
+	-webkit-flex: 1;
+  }
+ }

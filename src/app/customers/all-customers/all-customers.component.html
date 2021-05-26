@@ -1,0 +1,98 @@
+<div id="main">
+
+<section>
+	<div>
+		<button mat-raised-button color="accent" (click)="fetchCustomers()">Fetch Customers</button>
+	</div>
+</section>
+
+<section>
+	<mat-accordion class="example-headers-align" multi *ngFor="let customer of customers">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{customer.first_name}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <h3>{{customer.first_name}}  {{customer.last_name}}</h3>
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      
+	  <div fxLayout="row" fxLayoutAlign="center" class="flex-container-box">
+		<div fxLayoutAlign="center center" class="flex-container">
+        <div class="push">
+          <mat-list>
+            <mat-list-item>First_Name</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Last_Name</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Date of Birth</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Address</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>City</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>State</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Country</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Phone No</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>Email</mat-list-item>
+          </mat-list>
+
+        </div>
+
+        <div class="push">
+          <mat-list>
+            <mat-list-item>{{customer.first_name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{customer.last_name}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{customer.dob | date}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.address}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.city}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.state}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.country}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.phone}}</mat-list-item>
+			<mat-divider></mat-divider>
+            <mat-list-item>{{customer.email}}</mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+	  
+	  <div class="push">
+	  <img src="assets/images/13.png" alt="Card image cap" *ngIf="customer.photo === undefined"/>
+		<img [src]="getImage(customer.photo)" alt="Card image cap" *ngIf="customer.photo !== undefined"/>
+	  </div>
+	  </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  
+  <div fxLayout="row">
+      <div fxFlex="30">
+          <mat-form-field appearance="outline">
+            <mat-label>sortBy</mat-label>
+            <mat-select placeholder="Mode" [(value)]="selected" (selectionChange)="onChange()">
+              <mat-option>None</mat-option>
+              <mat-option value="first_name">First_Name</mat-option>
+			  <mat-option value="last_name">Last_Name</mat-option>
+			  <mat-option value="dob">Date Of Birth</mat-option>
+              <mat-option value="updatedAt">createdAt</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div fxFlex="70">
+        <mat-paginator [length]="totalCustomers" [pageSize]="customersPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)" *ngIf="customers.length > 0"></mat-paginator>
+      </div>
+    </div>
+</section>
+</div>

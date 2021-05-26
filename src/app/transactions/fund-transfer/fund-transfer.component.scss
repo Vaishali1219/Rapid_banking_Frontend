@@ -1,0 +1,51 @@
+mat-list{
+	margin: 5px auto;
+	padding: 5px;
+	width: 300%;
+}
+
+mat-card {
+  width: 100%;
+}
+
+mat-form-field, textarea {
+  width: 300px;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.half {
+  display: none;
+}
+
+button{
+    margin: 5px;
+    padding: 5px;
+}
+
+div{
+	margin: 2px;
+	padding: 2px;
+}
+
+@media (max-width: 800px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .full {
+    display: none;
+  }
+
+  mat-form-field, textarea {
+    width: 200px;
+  }
+}

@@ -1,0 +1,19 @@
+<div>
+  <mat-tab-group>
+    <mat-tab label="Transfer Funds" fxLayoutlex flexLayoutAlign="center center"> <app-fund-transfer></app-fund-transfer> </mat-tab>
+    <mat-tab label="Credit Account"> <app-credit-account></app-credit-account> </mat-tab>
+	<mat-tab label="Debit Account"> <app-debit-account></app-debit-account> </mat-tab>
+	<mat-tab label="Statement Enquiry"> <app-statement-enquiry></app-statement-enquiry> </mat-tab>
+	<mat-tab label="Download Statement"> <app-get-account-statement></app-get-account-statement> </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+<!--<app-customer-detail></app-customer-detail>-->
+
+<!--<mat-tab-group *ngIf="!ongoingTraining">
+  <mat-tab label="New Training" fxLayoutlex flexLayoutAlign="center center"><app-new-training></app-new-training></mat-tab>
+  <mat-tab label="Past Training"><app-past-training></app-past-training></mat-tab>
+</mat-tab-group>
+
+<app-current-training *ngIf="ongoingTraining" (trainingExit)="ongoingTraining = false"></app-current-training>-->

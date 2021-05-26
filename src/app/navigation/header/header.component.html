@@ -1,0 +1,37 @@
+<p>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <a><span>{{title}}</span></a>
+
+      <span class="example-spacer"></span>
+
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout class="navigation-items" fxLayoutGap="10px">
+          <li><span><button mat-icon-button class="example-icon" routerLink="/home"><mat-icon>home</mat-icon></button></span></li>
+          <li><span><button mat-icon-button class="example-icon" routerLink="/transactions-log"><mat-icon>book</mat-icon></button></span></li>
+        </ul>
+      </div>
+
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <!--<span><a mat-button>Courses</a></span>-->
+      <form class="example-form" (submit)="findAccount(accountFindForm)" #accountFindForm="ngForm">
+        <mat-form-field class="example-full-width">
+          <mat-label>Enter Account Number</mat-label>
+          <input matInput placeholder="123456" name="account_number" ngModel #account_numberInput="ngModel">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button color="warn" type="submit">Find</button>
+      </form>
+
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</p>

@@ -1,0 +1,50 @@
+<section>
+	<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field>
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" />
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition
+  <!-- <!-- ['slno', 'time', 'from_account_number', 'to_account_number', 'narration', 'amount']" -->  
+    <!-- <!-- <!-- Position Column -->  
+    <ng-container matColumnDef="slno">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Sl No</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.slno}} </mat-cell>
+    </ng-container>
+	
+    <ng-container matColumnDef="time">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Transaction Date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="from_account_number">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>From Account Number</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.from_account_number}} </mat-cell>
+    </ng-container>
+	
+	<ng-container matColumnDef="to_account_number">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>To Account Number</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.to_account_number}} </mat-cell>
+    </ng-container>
+	
+	<ng-container matColumnDef="narration">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Narration</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.narration}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+
+
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
+</section>

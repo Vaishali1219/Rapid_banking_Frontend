@@ -1,0 +1,98 @@
+<div>
+      <div fxLayoutAlign="center center" class="flex-container">
+        
+		<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <!-- <mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner> -->
+	<form (submit)="onTransferFunds()" [formGroup]="fund_transfer_form" fxLayout="column" fxLayoutAlign="center center">
+      
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field>
+			<input matInput type="text" placeholder="From Account Number" #fromAccountNumber formControlName="from_account_number" (keydown.tab)="displayCustomer(fromAccountNumber.value, 0)"/>
+             <mat-error *ngIf="fund_transfer_form.get('from_account_number').invalid">Invalid Account Number</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+			<mat-form-field>
+              <input matInput type="text" formControlName="from_account_holder"/>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field>
+			<input matInput type="text" #toAccountNumber placeholder="To Account Number" formControlName="to_account_number" (keydown.tab)="displayCustomer(toAccountNumber.value, 1)"/>
+             <mat-error *ngIf="fund_transfer_form.get('to_account_number').invalid">Invalid Account Number</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+			<mat-form-field>
+              <input matInput type="text" formControlName="to_account_holder"/>
+            </mat-form-field>
+          </div>
+        </div>
+		
+		<div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field>
+			<input matInput type="text" #amountValue placeholder="Amount" formControlName="amount" (keydown.tab)="setAmount(amountValue.value)"/>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <button mat-raised-button color="accent" type="submit">Submit</button>
+          <button mat-raised-button color="warn">Clear</button>
+        </div>
+        <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <!-- <mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner> -->
+    <form (submit)="onTransferFunds()" [formGroup]="fund_transfer_form" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+
+        <mat-form-field>
+			<input matInput type="text" placeholder="From Account Number" #fromAccountNumber formControlName="from_account_number" (keydown.tab)="displayCustomer(fromAccountNumber.value, 0)"/>
+             <mat-error *ngIf="fund_transfer_form.get('from_account_number').invalid">Invalid Account Number</mat-error>
+        </mat-form-field>
+		
+        <mat-form-field>
+            <input matInput type="text" formControlName="from_account_holder"/>
+        </mat-form-field>
+
+        <mat-form-field>
+			<input matInput type="text" #toAccountNumber placeholder="To Account Number" formControlName="to_account_number" (keydown.tab)="displayCustomer(toAccountNumber.value, 1)"/>
+             <mat-error *ngIf="fund_transfer_form.get('to_account_number').invalid">Invalid Account Number</mat-error>
+        </mat-form-field>
+		
+		<mat-form-field>
+            <input matInput type="text" formControlName="to_account_holder"/>
+        </mat-form-field>
+		
+		<mat-form-field>
+            <input matInput type="text" #amountValue placeholder="Amount" formControlName="amount" (keydown.tab)="setAmount(amountValue.value)"/>
+        </mat-form-field>
+        </div>
+      <div fxLayoutAlign="center center" class="flex-container">
+        <button mat-raised-button color="accent" type="submit">Submit</button>
+        <button mat-raised-button color="warn">Clear</button>
+      </div>
+      <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+    </form>
+  </mat-card>
+</div>
+		
+      </div>
+</div>

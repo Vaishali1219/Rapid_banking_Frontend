@@ -1,0 +1,160 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <form (submit)="findAccount(accountFindForm)" #accountFindForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+		  
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Account Number" name="account_number" ngModel #account_numberInput="ngModel" required />
+              <mat-error *ngIf="account_numberInput.invalid">Please Enter Account Number</mat-error>
+            </mat-form-field>
+          </div>
+		  
+		  <div>
+			<button mat-raised-button color="accent" type="submit">Find Account</button>
+		  </div>
+          
+			<div>
+				<button mat-raised-button color="warn" (click)="resetForm(accountFindForm)">Clear</button>
+			</div>
+        </div>   
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <form (submit)="findAccount(accountFindForm_a)" #accountFindForm_a="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+          
+           <mat-form-field>
+              <input matInput type="text" placeholder="Account Number" name="account_number" ngModel #account_numberInput="ngModel" required />
+              <mat-error *ngIf="account_numberInput.invalid">Please Enter Account Number</mat-error>
+           </mat-form-field>
+		  
+		  <div fxLayout="row" fxLayoutAlign="center center" class="flex-container-box">
+			<button mat-raised-button color="accent" type="submit">Find Account</button>
+			<button mat-raised-button color="warn" (click)="resetForm(accountFindForm)">Clear</button>
+		  </div>
+       
+        </div>
+
+       </form> 
+  </mat-card>
+</div>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<section>
+	<div fxLayout="row" fxLayoutAlign="center center" class="flex-container-box" fxHide.lt-md>
+	<mat-card>
+	
+	<form [formGroup]="account_detail_form" fxLayout="row" fxLayoutAlign="center center">
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder</mat-label>
+    <input matInput type="text" formControlName="name" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Number</mat-label>
+    <input matInput type="text" formControlName="account_number" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account category</mat-label>
+    <input matInput type="text" formControlName="account_category" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Balance</mat-label>
+    <input matInput type="text" formControlName="balance" />
+  </mat-form-field>
+  </form>
+  </mat-card>
+ </div>
+ 
+ <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box" fxHide.gt-sm>
+	<mat-card>
+	
+	<form [formGroup]="account_detail_form" fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Holder</mat-label>
+    <input matInput type="text" formControlName="name" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Number</mat-label>
+    <input matInput type="text" formControlName="account_number" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account category</mat-label>
+    <input matInput type="text" formControlName="account_category" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Account Balance</mat-label>
+    <input matInput type="text" formControlName="balance" />
+  </mat-form-field>
+  </form>
+  </mat-card>
+ </div>
+</section>
+
+
+<section>
+	<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field>
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" />
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition
+  <!-- <!-- ['slno', 'time', ''narration', 'credit', 'debit', 'balance']" -->  -->
+    <!-- <!-- <!-- Position Column -->  -->
+    <ng-container matColumnDef="slno">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Sl No</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.slno}} </mat-cell>
+    </ng-container>
+	
+    <ng-container matColumnDef="time">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Transaction Date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="narration">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Transaction Description</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.narration}} </mat-cell>
+    </ng-container>
+	
+	<ng-container matColumnDef="credit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Credit</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.credit}} </mat-cell>
+    </ng-container>
+	
+	<ng-container matColumnDef="debit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Debit</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.debit}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="balance">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Balance</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.balance}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+
+
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
+</section>
+
+

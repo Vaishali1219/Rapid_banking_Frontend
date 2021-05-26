@@ -1,0 +1,236 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+    <form (submit)="findCustomer(customerFindForm)" #customerFindForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+		  <div>
+			<mat-form-field appearance="fill">
+            <mat-label>Find Value</mat-label>
+            <mat-select placeholder="Gender" ngModel name="sex" required>
+              <mat-option value="email">
+                Email
+              </mat-option>
+              <mat-option value="phone">
+                Phone
+              </mat-option>
+              <mat-option value="cust_id">
+                Customer_Id
+              </mat-option>
+			  <mat-option value="accountNumber">
+                Account_Number
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+		  </div>
+          
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Last Name" name="last_name" ngModel #last_nameInput="ngModel" required />
+              <mat-error *ngIf="last_nameInput.invalid">Please Enter Last Name</mat-error>
+            </mat-form-field>
+          </div>
+		  
+		  <div>
+			<button mat-raised-button color="accent" type="submit">Find Customer</button>
+		  </div>
+          
+			<div>
+				<button mat-raised-button color="warn" (click)="resetForm(customerFindForm)">Clear</button>
+			</div>
+        </div>
+
+        
+        <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div>
+      <div fxLayoutAlign="center center" class="flex-container">
+        
+		<div fxLayout="column" fxLayoutAlign="center center" class="full" fxHide.lt-md>
+  <mat-card>
+    <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+    <form (submit)="onUpdateCustomer(customerUpdateForm)" #customerUpdateForm="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="First Name" name="first_name" ngModel #first_nameInput="ngModel" required />
+              <mat-error *ngIf="first_nameInput.invalid">Please Enter First Name</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Last Name" name="last_name" ngModel #last_nameInput="ngModel" required />
+              <mat-error *ngIf="last_nameInput.invalid">Please Enter Last Name</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field>
+              <input matInput type="email" placeholder="E-Mail" name="email" ngModel #emailInput="ngModel" required email />
+              <mat-error *ngIf="emailInput.invalid">Please Enter a Valid Email</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Phone" name="phone" ngModel #phoneInput="ngModel" required />
+              <mat-error *ngIf="phoneInput.invalid">Please Enter a Valid Phone Number</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select placeholder="Gender" ngModel name="sex" required>
+              <mat-option value=0>
+                Male
+              </mat-option>
+              <mat-option value=1>
+                Female
+              </mat-option>
+              <mat-option value=3>
+                Others
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <input matInput [matDatepicker]="picker" placeholder="Date Of Birth" [max]="maxDate" ngModel name="birthdate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Address" name="address" ngModel #addressInput="ngModel" required />
+              <mat-error *ngIf="addressInput.invalid">Please Enter a Valid Address</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="City" name="city" ngModel #cityInput="ngModel" required />
+              <mat-error *ngIf="cityInput.invalid">Please Enter a Valid City Name</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="State" name="state" ngModel #stateInput="ngModel" required />
+              <mat-error *ngIf="stateInput.invalid">Please Enter a Valid State Name</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Country" name="country" ngModel #countryInput="ngModel" required />
+              <mat-error *ngIf="countryInput.invalid">Please Enter a Valid Country Name</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxLayoutAlign="center center" class="flex-container">
+          <button mat-raised-button color="accent" type="submit">Update Customer</button>
+          <button mat-raised-button color="warn" (click)="resetForm(customerUpdateForm)">Clear</button>
+        </div>
+        <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+      </div>
+  </form>
+  </mat-card>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="center center" class="half" fxHide.gt-sm>
+  <mat-card>
+    <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+    <form (submit)="onUpdateCustomer(customerUpdateForm_a)" #customerUpdateForm_a="ngForm" fxLayout="column" fxLayoutAlign="center center">
+
+      <div fxLayout="column" fxLayoutAlign="center center" class="flex-container-box">
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="First Name" name="first_name" ngModel #first_nameInput="ngModel" required />
+          <mat-error *ngIf="first_nameInput.invalid">Please Enter First Name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Last Name" name="last_name" ngModel #last_nameInput="ngModel" required />
+          <mat-error *ngIf="last_nameInput.invalid">Please Enter Last Name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="email" placeholder="E-Mail" name="email" ngModel #emailInput="ngModel" required email />
+          <mat-error *ngIf="emailInput.invalid">Please Enter a Valid Email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Phone" name="phone" ngModel #phoneInput="ngModel" required />
+          <mat-error *ngIf="phoneInput.invalid">Please Enter a Valid Phone Number</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input matInput [matDatepicker]="dobpicker" placeholder="Date Of Birth" [max]="maxDate" ngModel name="birthdate">
+          <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
+          <mat-datepicker #dobpicker></mat-datepicker>
+        </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select placeholder="Gender" ngModel name="sex" required>
+              <mat-option value=0>
+                Male
+              </mat-option>
+              <mat-option value=1>
+                Female
+              </mat-option>
+              <mat-option value=3>
+                Others
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="text" placeholder="Address" name="address" ngModel #addressInput="ngModel" required />
+            <mat-error *ngIf="addressInput.invalid">Please Enter a Valid Address</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="text" placeholder="City" name="city" ngModel #cityInput="ngModel" required />
+            <mat-error *ngIf="cityInput.invalid">Please Enter a Valid City Name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="text" placeholder="State" name="state" ngModel #stateInput="ngModel" required />
+            <mat-error *ngIf="stateInput.invalid">Please Enter a Valid State Name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="text" placeholder="Country" name="country" ngModel #countryInput="ngModel" required />
+            <mat-error *ngIf="countryInput.invalid">Please Enter a Valid Country Name</mat-error>
+          </mat-form-field>
+        </div>
+      <div fxLayoutAlign="center center" class="flex-container">
+        <button mat-raised-button color="accent" type="submit">Add Customer</button>
+        <button mat-raised-button color="warn" (click)="resetForm(customerUpdateForm_a)">Clear</button>
+      </div>
+      <!--<mat-spinner mode="indeterminate" fxLayoutAlign="center center"></mat-spinner>-->
+    </form>
+  </mat-card>
+</div>
+		
+      </div>
+</div>
+
